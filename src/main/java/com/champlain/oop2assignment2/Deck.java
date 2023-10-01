@@ -8,6 +8,19 @@ import java.util.List;
 public class Deck extends CardCollection implements CardSource {
     private final List<Card> aCards = new ArrayList<Card>();
 
+    private CardComparator cardComparator;
+
+    public void setCardComparator(CardComparator comparator) {
+        this.cardComparator = comparator;
+    }
+
+    public void sort() {
+        if (cardComparator != null) {
+            Collections.sort(aCards, (card1, card2) -> cardComparator.compare(card1, card2));
+        }
+    }
+
+
     public Deck() {
         for (Rank currentRank : Rank.values()) {
             for (Suit currentSuit : Suit.values()) {

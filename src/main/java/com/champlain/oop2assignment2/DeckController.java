@@ -30,8 +30,15 @@ public class DeckController {
 
     @FXML
     protected void onSortButtonClick() {
-        aDeckTextArea.setText("This does not sort anything yet.");
-    }
+        // Example: Set the sorting strategy to RankFirstComparator
+        RankFirstComparator rankFirstComparator = new RankFirstComparator();
+        aDeck.setCardComparator(rankFirstComparator);
+
+        // Sort the deck
+        aDeck.sort();
+
+        // Update the display
+        displayCardCollections();    }
 
     @FXML
     protected void onScoreButtonClick() {
