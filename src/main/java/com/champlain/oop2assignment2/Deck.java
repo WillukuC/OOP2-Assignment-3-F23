@@ -8,12 +8,21 @@ import java.util.List;
 public class Deck extends CardCollection implements CardSource {
     private final List<Card> aCards = new ArrayList<Card>();
 
-    public Deck() {
+    private static Deck instance;
+
+    private Deck() {
         for (Rank currentRank : Rank.values()) {
             for (Suit currentSuit : Suit.values()) {
                 this.aCards.add(new Card(currentRank, currentSuit));
             }
         }
+    }
+
+    public static Deck getInstance() {
+        if (instance == null) {
+            instance = new Deck();
+        }
+        return instance;
     }
 
     public void shuffle() {
