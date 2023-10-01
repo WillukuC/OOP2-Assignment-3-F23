@@ -9,6 +9,18 @@ public class Deck extends CardCollection implements CardSource {
     private final List<Card> aCards = new ArrayList<Card>();
 
     private static Deck instance;
+    
+    private CardComparator cardComparator;
+
+	public void setCardComparator(CardComparator comparator) {
+        this.cardComparator = comparator;
+    }
+
+    public void sort() {
+        if (cardComparator != null) {
+            Collections.sort(aCards, (card1, card2) -> cardComparator.compare(card1, card2));
+        }
+    }
 
     private Deck() {
         for (Rank currentRank : Rank.values()) {
