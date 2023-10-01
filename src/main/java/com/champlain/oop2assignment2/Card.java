@@ -22,4 +22,17 @@ public class Card {
     public String toString() {
         return this.aRank + " of " + this.aSuit;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        } else if (!(o instanceof Card)) {
+            return false;
+        } else if (((Card) o).aRank == this.aRank && ((Card) o).aSuit == this.aSuit) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
