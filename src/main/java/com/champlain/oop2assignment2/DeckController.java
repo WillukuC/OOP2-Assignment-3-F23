@@ -40,6 +40,18 @@ public class DeckController {
         // Update the display
         displayCardCollections();
     }
+    @FXML
+    protected void sortRankButton() {
+        // Set the sorting strategy to SuitFirstComparator
+        RankFirstComparator rankFirstComparator = new RankFirstComparator();
+        aDeck.setCardComparator(rankFirstComparator);
+
+        // Sort the deck
+        aDeck.sort();
+
+        // Update the display
+        displayCardCollections();
+    }
 
     @FXML
     protected void onScoreButtonClick() {
